@@ -18,6 +18,11 @@ public class FileUploadController {
     public @ResponseBody String provideUploadInfo() {
         return "You can upload a file by posting to this same URL.";
     }
+    
+    @RequestMapping(value="/get_customers", method=RequestMethod.GET)
+    public @ResponseBody String provideCustomerNames() {
+        return "you will see customer names here!";
+    }
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
     public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
