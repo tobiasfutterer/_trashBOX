@@ -12,6 +12,6 @@
 
 <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:ApplicationContext.xml</param-value>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>
 </context-param>
 </web-app>

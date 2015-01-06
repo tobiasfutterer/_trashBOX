@@ -1,4 +1,4 @@
-package server;
+package test_examples;
 
 import java.util.List;
 import java.util.ArrayList;

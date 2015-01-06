@@ -1,6 +1,7 @@
 package trashbox;
 
-import server.SampleExample;
+import test_examples.SampleExample;
+
 import org.junit.Assert;
 import org.junit.Test;
 
