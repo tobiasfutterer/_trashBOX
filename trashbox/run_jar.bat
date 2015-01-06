@@ -1,0 +1,2 @@
+java -jar "C:\Users\D061896\git\_trashbox\trashbox\target\trashbox-0.0.1-SNAPSHOT.jar" --spring.datasource.url=jdbc:mysql://localhost/trashbox --spring.datasource.username=root --spring.datasource.password=admin --spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+pause
