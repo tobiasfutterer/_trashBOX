@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -16,18 +17,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FirstController {
 	@Autowired
 	private ApplicationContext ac;
+	
+	@Value( "${hello.value:World}" )
+    private String helloValue;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView defaultPage() {
-		return  new ModelAndView("index");
-	}
+	public String sayHello()
+    {
+        return "Hello " + helloValue;
+    }
 	
+ 
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public @ResponseBody String provideUploadInfo() {
 		return "You can upload a file by posting to this same URL.";
