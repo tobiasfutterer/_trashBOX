@@ -1,4 +1,4 @@
-package test_examples;
+package trashbox_test;
 
 import java.util.List;
 import java.util.ArrayList;

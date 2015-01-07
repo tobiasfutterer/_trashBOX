@@ -1,4 +1,4 @@
-package app;
+package trashbox.web;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class App_Controller {
+public class FirstController {
 	@Autowired
 	private ApplicationContext ac;
 
