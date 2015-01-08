@@ -65,8 +65,7 @@ public class FirstController {
 		DataSource dataSource = (DataSource) ac.getBean("dataSource");
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.update("INSERT INTO customer(first_name) VALUES('"
-				+ Long.toString(System.currentTimeMillis()) + "')");
+		jdbcTemplate.update("INSERT INTO customer(first_name) VALUES(?)",Long.toString(System.currentTimeMillis()));
 		return "done.";
 	}
 
