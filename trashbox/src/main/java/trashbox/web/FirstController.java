@@ -26,10 +26,16 @@ public class FirstController {
 	@Value( "${hello.value:World}" )
     private String helloValue;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String sayHello()
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	public @ResponseBody String sayHello()
     {
-        return "Hello " + helloValue;
+		try {
+			return "Hello " + helloValue;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return e.getMessage();
+		}
+        
     }
 	
  
