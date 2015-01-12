@@ -4,11 +4,13 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Controller;
@@ -18,13 +20,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import trashbox.domain.UserAccount;
+
 @Controller
 public class FirstController {
 	@Autowired
 	private ApplicationContext ac;
 	
+	@Autowired
+	private UserAccount userAcc;
+	
 	@Value( "${hello.value:World}" )
     private String helloValue;
+	
+	
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public @ResponseBody String sayHello()
@@ -34,8 +43,34 @@ public class FirstController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			return e.getMessage();
-		}
+		}        
+    }
+	
+	@RequestMapping(value = "/whoami", method = RequestMethod.GET)
+	public @ResponseBody String whoAmI(HttpSession session)
+    {
+		try {
+			return "Hello " + userAcc.getFirstName() + " " + userAcc.getLastName() + " finally " + session.getAttribute("firstlast");
+		} catch (Exception e) {
+			// TODO: handle exception
+			return e.getMessage();
+		}        
+    }
+	@RequestMapping(value = "/iam", method = RequestMethod.GET)
+	public @ResponseBody String iAm(@RequestParam("first") String first,@RequestParam("last") String last, HttpSession session)
+    {
+        session.setAttribute("firstlast", (String)first+last);
         
+		if(userAcc != null){
+		userAcc.setFirstName(first);
+		userAcc.setLastName(last);
+		}
+		else
+		{
+			userAcc = new UserAccount(1,first,last);
+		}
+		
+		return "yup!";
     }
 	
  
