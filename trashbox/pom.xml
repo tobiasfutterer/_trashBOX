@@ -62,22 +62,15 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			</dependency>
+<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-	<repository>
-	<id>spring-releases</id>
-	<name>Spring Releases</name>
-	<url>https://repo.spring.io/libs-release</url>
-	</repository>
-	</repositories>
-	<pluginRepositories>
-	<pluginRepository>
-	<id>spring-releases</id>
-	<name>Spring Releases</name>
-	<url>https://repo.spring.io/libs-release</url>
-	</pluginRepository>
-	</pluginRepositories>
 </project>
