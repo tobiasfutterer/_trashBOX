@@ -19,6 +19,36 @@ public class UserAccount implements Serializable {
 	}
 
 	private String lastName;
+	private String password;
+	private UserProfile userProfile;
+
+	/**
+	 * @return the userProfile
+	 */
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	/**
+	 * @param userProfile the userProfile to set
+	 */
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public UserAccount() {
 		

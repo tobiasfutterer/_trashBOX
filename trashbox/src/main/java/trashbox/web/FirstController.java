@@ -1,11 +1,5 @@
 package trashbox.web;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Date;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -19,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import trashbox.domain.UserAccount;
@@ -36,11 +29,16 @@ public class FirstController {
     private String helloValue;
 	
 	@RequestMapping("/")
-	public String userProfile(Map<String, Object> model) {
-		model.put("time", new Date());
-		model.put("message","yo!");
-		return "userProfile";
+	public String userProfile() {
+		return "index";
 	}
+	
+	@RequestMapping("/test")
+	public String userProfile(ModelAndView modelAndView)
+	{
+	    return "userProfile";
+	}
+	
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public @ResponseBody String sayHello()
@@ -76,39 +74,13 @@ public class FirstController {
 		{
 			userAcc = new UserAccount(1,first,last);
 		}
+		
 		ModelAndView model = new ModelAndView("userProfile");
-		 
+		model.addObject("first", userAcc.getFirstName()); 
+		model.addObject("last", userAcc.getLastName());
 		return model;
     }
 	
-	@RequestMapping("/test")
-	public String userProfile(ModelAndView modelAndView)
-	{
-	    return "userProfile";
-	}
-	
- 
-	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	public @ResponseBody String provideUploadInfo() {
-		return "You can upload a file by posting to this same URL.";
-	}
-
-	
-	@RequestMapping(value = "/create_table", method = RequestMethod.GET)
-	public @ResponseBody String createDB() {
-		DataSource dataSource = (DataSource) ac.getBean("dataSource");
-
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		try {
-			jdbcTemplate
-			.update("CREATE TABLE customer (id MEDIUMINT NOT NULL AUTO_INCREMENT, first_name CHAR(100), PRIMARY KEY (id))");
-			return "Table created!";
-		} catch (Exception e) {
-			return "Error: " + e.getMessage();
-		}
-		
-	}
-
 	@RequestMapping(value = "/add_customer", method = RequestMethod.GET)
 	public @ResponseBody String addCustomer() {
 		DataSource dataSource = (DataSource) ac.getBean("dataSource");
