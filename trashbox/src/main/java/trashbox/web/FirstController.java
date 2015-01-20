@@ -29,16 +29,9 @@ public class FirstController {
     private String helloValue;
 	
 	@RequestMapping("/")
-	public String userProfile() {
-		return "index";
+	public String master() {
+		return "master";
 	}
-	
-	@RequestMapping("/test")
-	public String userProfile(ModelAndView modelAndView)
-	{
-	    return "userProfile";
-	}
-	
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public @ResponseBody String sayHello()

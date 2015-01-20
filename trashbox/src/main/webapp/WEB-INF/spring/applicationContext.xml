@@ -17,7 +17,7 @@
 	<!-- <property name="username" value="root" /> -->
 	<!-- <property name="password" value="admin" /> -->
 	<!-- </bean> -->
-	
+
 	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler">
 		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor" />
 	</bean>
@@ -28,4 +28,13 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layouts/layouts.xml</value>
+				<value>/WEB-INF/layouts/views.xml</value>
+			</list>
+		</property>
+	</bean>
 </beans>
