@@ -1,34 +1,50 @@
+<!DOCTYPE html>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Spring MVC - Tiles Integration tutorial</title>
-	<link rel="stylesheet" href="resources/css/screen.css" 
-      type="text/css" media="screen, projection"></link>
-	<link rel="stylesheet" href="resources/css/print.css" 
-      type="text/css" media="print"></link>
-	<!--[if IE]>
-	<link rel="stylesheet" href="resources/css/ie.css" 
-      type="text/css" media="screen, projection">
-	<![endif]-->
-<style>
-body{ margin-top:20px; margin-bottom:20px; background-color:#DFDFDF;}
-</style>
-</head>
-<body>
-	<div class="container" style="border: #C1C1C1 solid 1px; border-radius:10px;">
-		<!-- Header -->
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title><tiles:getAsString name="title" /></title>
+		<!-- Bootstrap core CSS -->
+		<link
+			href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"
+			rel="stylesheet">
+		
+		<!-- Bootstrap theme -->
+		<link
+			href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css" />"
+			rel="stylesheet">
+		
+		<!-- Custom styles for this template -->
+		<link href="<c:url value="/resources/bootstrap/custom/css/theme.css" />"
+			rel="stylesheet">
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		    <![endif]-->
+	</head>
+
+  	<body role="document">
+  		<!-- Header -->
 		<tiles:insertAttribute name="header" />
-		<!-- Menu Page -->
-		<div class="span-5  border" style="height:400px;background-color:#FCFCFC;">
-			<tiles:insertAttribute name="menu" />
-		</div>
-		<!-- Body Page -->
-		<div class="span-19 last">
-			<tiles:insertAttribute name="body" />
-		</div>
-		<!-- Footer Page -->
-		<tiles:insertAttribute name="footer" />
-	</div>
-</body>
+		<!-- nav -->
+		<tiles:insertAttribute name="nav" />
+		<!-- Body -->
+		<tiles:insertAttribute name="body" />
+		<!-- Footer -->
+		<tiles:insertAttribute name="footer" />  
+		
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
+		<script src="<c:url value="/resources/bootstrap/js/custom_scripts.js" />"></script>
+	</body>
 </html>

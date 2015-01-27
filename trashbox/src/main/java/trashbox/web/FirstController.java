@@ -29,8 +29,20 @@ public class FirstController {
     private String helloValue;
 	
 	@RequestMapping("/")
-	public String master() {
-		return "master";
+	public String default_page() {
+		return "index_tiles";
+	}
+	
+	@RequestMapping("/user_profile")
+	public ModelAndView user_profile() {
+		ModelAndView model = new ModelAndView("user_profile");
+		model.addObject("first", "Tobias"); 
+		model.addObject("last", "Futterer");
+		return model;
+	}
+	@RequestMapping("/index_tiles")
+	public String index_tiles() {
+		return "index_tiles";
 	}
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
